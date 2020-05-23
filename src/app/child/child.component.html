@@ -1,0 +1,71 @@
+
+    <div class="container" >
+
+        <div class="jumbotron">
+            <h1 class="display-4" style="text-align: center;">Bug Report</h1>
+            <p class="lead" style="text-align: center;">Please be as detailed as possible to aid us in troubleshooting process</p>            
+          </div>
+        <form #myform="ngForm" (ngSubmit)="onSubmit(myform.value)">
+
+            
+
+            <label> <strong> Your name *</strong></label>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname"  >   
+                    <label> First Name</label>  
+                </div>
+
+                <div class="col">
+                    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"   >
+                    <label> Last Name</label>  
+                </div>
+               
+            </div>
+            <br>
+            <label><strong> Email *</strong></label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="email">   
+            <br>
+            <label><strong> Date and Time first you noticed bug*</strong></label>
+            <div class="row">
+                <div class="col-xs-12 col-12 col-md-4 form-group">
+                  <input type="text"
+                         placeholder="Datepicker"
+                         class="form-control"
+                         >
+                </div>
+              </div>
+              <timepicker [(ngModel)]="mytime" ></timepicker>
+              <!-- <pre class="alert alert-info">Time is: {{mytime}}</pre> -->
+              <br>
+               <label><strong> Impact </strong></label>
+               <select class="custom-select">
+                <option selected>Low</option>
+                <option *ngFor="let value of impact">{{value}}</option>     
+                 </select>
+
+                 <br>
+                 <br>
+            
+                <label ><strong>Detailed explaination of Bug*</strong></label>
+                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                 <br>
+                 
+                 <button (click)="onOpenChild()" class="btn btn-primary" type="submit">Submit </button>
+                    <div *ngIf="shouldopen">
+                                <app-result 
+                                [first_name]="firstname" 
+                                [last_name]="lastname"
+                                [email_id]="email"                             
+                                >
+                                </app-result>                     
+                    </div>
+                 <br>
+                 <br>
+                 
+        </form>
+        <router-outlet></router-outlet>
+   
+    </div>
+  
