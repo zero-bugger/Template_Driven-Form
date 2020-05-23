@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import  { BugReport } from '../model'
 
 
 import { BsDatepickerConfig, BsDatepickerViewMode } from 'ngx-bootstrap/datepicker';
@@ -11,11 +12,10 @@ import { BsDatepickerConfig, BsDatepickerViewMode } from 'ngx-bootstrap/datepick
 })
 export class ChildComponent implements OnInit {
   impact:string[]=['High','Medium'];
-  mytime:String;
-  firstname:String;
-  email:String;
-  lastname:String;
   shouldopen:boolean=false;
+  
+  
+  model = new BugReport('','','','','','','');
   
 
 
@@ -23,14 +23,10 @@ export class ChildComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  constructor(private router:Router) { }
-  onSubmit(form:any){
-    this.router.navigateByUrl('/result');
-    console.log("Values",form);
+  constructor(  ) { }
+  onSubmit(){
+    this.shouldopen = true;
   }
 
-  onOpenChild():boolean{
-    return this.shouldopen = true;
-  }
 
 }

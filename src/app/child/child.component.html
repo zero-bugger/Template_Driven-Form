@@ -1,11 +1,14 @@
 
     <div class="container" >
 
-        <div class="jumbotron">
+        <div [hidden]="shouldopen">
+
+          <div class="jumbotron">
             <h1 class="display-4" style="text-align: center;">Bug Report</h1>
             <p class="lead" style="text-align: center;">Please be as detailed as possible to aid us in troubleshooting process</p>            
           </div>
-        <form #myform="ngForm" (ngSubmit)="onSubmit(myform.value)">
+
+          <form #myform="ngForm" (ngSubmit)="onSubmit()">
 
             
 
@@ -13,59 +16,110 @@
             <br>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="firstname" [(ngModel)]="firstname"  >   
+                    <input type="text" class="form-control" 
+                    name="firstname" 
+                    [(ngModel)]="model.firstname" >   
                     <label> First Name</label>  
                 </div>
 
                 <div class="col">
-                    <input type="text" class="form-control" name="lastname" [(ngModel)]="lastname"   >
+                    <input type="text" class="form-control" 
+                    name="lastname" 
+                    [(ngModel)]="model.lastname"   >
                     <label> Last Name</label>  
                 </div>
                
             </div>
             <br>
             <label><strong> Email *</strong></label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="email">   
+            <input type="email" class="form-control" 
+            name="email" 
+            [(ngModel)]="model.email">   
             <br>
-            <label><strong> Date and Time first you noticed bug*</strong></label>
-            <div class="row">
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                  <input type="text"
+
+             <label><strong> Date and Time first you noticed bug*</strong></label>
+              <div class="row">
+                 <div class="col-xs-12 col-12 col-md-4 form-group">
+                       <input type="text"
                          placeholder="Datepicker"
                          class="form-control"
+                         name="date"
+                         [(ngModel)]="model.date"
+                         bsDatepicker
                          >
-                </div>
+                  </div>
               </div>
-              <timepicker [(ngModel)]="mytime" ></timepicker>
+              <timepicker [(ngModel)]="model.time" name="time"></timepicker>
+            
               <!-- <pre class="alert alert-info">Time is: {{mytime}}</pre> -->
+
               <br>
                <label><strong> Impact </strong></label>
-               <select class="custom-select">
+               <select class="custom-select"
+               [(ngModel)]="model.impact"
+               name="impact">
                 <option selected>Low</option>
-                <option *ngFor="let value of impact">{{value}}</option>     
+                <option *ngFor="let value of impact" [value]="value">{{value}}</option>     
                  </select>
 
                  <br>
                  <br>
             
                 <label ><strong>Detailed explaination of Bug*</strong></label>
-                <textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+                <textarea class="form-control" 
+                id="exampleFormControlTextarea3" 
+                rows="7"
+                [(ngModel)]="model.explanation"
+                name="explanation"
+                ></textarea>
                  <br>
                  
-                 <button (click)="onOpenChild()" class="btn btn-primary" type="submit">Submit </button>
-                    <div *ngIf="shouldopen">
-                                <app-result 
-                                [first_name]="firstname" 
-                                [last_name]="lastname"
-                                [email_id]="email"                             
-                                >
-                                </app-result>                     
-                    </div>
+                 <button (click)="onSubmit()" class="btn btn-primary" type="submit">Submit </button>
+            
                  <br>
                  <br>
                  
-        </form>
-        <router-outlet></router-outlet>
+           </form>
+       </div>
+
+       <div [hidden]="!shouldopen">
+
+                <h2> You have submitted following :</h2>
+
+                <div class="row">
+                    <div class="col-xs-3"><strong>First Name :</strong></div>
+                    <div class="col-xs-9">{{ model.firstname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Last Name :</strong></div>
+                    <div class="col-xs-9">{{ model.lastname }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Email :</strong></div>
+                    <div class="col-xs-9">{{ model.email }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong> Date :</strong> </div>
+                    <div class="col-xs-9">{{ model.date }}</div>
+
+           
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong> Time :</strong> </div>
+                    <div class="col-xs-9">{{ model.time }}</div>
+
+           
+                </div>
+    
+                <div class="row">
+                    <div class="col-xs-3"><strong>Impact:</strong></div>
+                    <div class="col-xs-9">{{ model.impact }}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3"><strong>Explanation :</strong></div>
+                    <div class="col-xs-9">{{ model.explanation }}</div>
+                </div>
+        </div>
    
     </div>
   

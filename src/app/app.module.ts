@@ -11,6 +11,7 @@ import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { ResultComponent } from './result/result.component';
+import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS} from 'ng-pick-datetime';
 
 
 
@@ -31,7 +32,8 @@ import { ResultComponent } from './result/result.component';
     TimepickerModule.forRoot(),
     ButtonsModule.forRoot(),
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OwlDateTimeModule
   
   ],
   providers: [],
