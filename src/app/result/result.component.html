@@ -1,5 +1,60 @@
-<h3>{{first_name}}</h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 12</title>
+</head>
+<body>
+    <div class="container" >
+      
+        <div class="row">
+            <div class="col-lg-6" >
+                <h1 style="text-align: center; color: rgb(191, 142, 236); font-family:Arial, Helvetica, sans-serif; margin-top: 20px; margin-right: 0;">Contact Our</h1>
+                <h3 style="text-align: center;font-family:Arial, Helvetica, sans-serif;">Customer Support Center</h3>
+            </div>
+            <div class="col-lg-3">
+                <img src="assets/images/MarvellousImage.jpeg" style="display: inline;">
+            </div>
+            
+        </div>
+        <div align="center">
+        <label> <h3>Contact Information</h3> </label>
+        <p>Please fill out your contact information below.</p>
+        </div>
+        <form>
+         
+            <label> </label>
+            <label> <strong> Name <font color="red">*</font></strong></label>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="firstname">   
+                    <label> First Name</label>  
+                </div>
 
-<h3>{{last_name}}</h3>
+                <div class="col">
+                    <input type="text" class="form-control" name="lastname">
+                    <label> Last Name</label>  
+                </div>
+               
+            </div>
 
-<h3>{{email_id}}</h3>
+            <br>
+
+                <label><strong> Email<font color="red">*</font></strong></label>
+                <input type="email" class="form-control" name="email">
+                <br>
+                <label><strong> Phone<font color="red">*</font> </strong></label>
+                <input type="number" class="form-control"name="phone">
+                <br>
+                <label><strong> Address<font color="red">*</font> </strong></label>
+                <input type="text" class="form-control"name="address">
+            <br>
+
+           </form>
+
+    </div>
+</body>
+</html>
+
